@@ -1,0 +1,34 @@
+{
+  "todolist": [
+    {
+      "id": 2,
+      "label": "Learn Spring boot",
+      "completed": true
+    },
+    {
+      "label": "Learn AdonisJs",
+      "completed": true,
+      "id": 3
+    },
+    {
+      "label": "Learn JAVA",
+      "completed": true,
+      "id": 4
+    },
+    {
+      "label": "Learn MEAN STACK ",
+      "completed": false,
+      "id": 5
+    },
+    {
+      "label": "Learn NestJs",
+      "completed": true,
+      "id": 6
+    },
+    {
+      "label": "Learn Javascript",
+      "completed": false,
+      "id": 7
+    }
+  ]
+}

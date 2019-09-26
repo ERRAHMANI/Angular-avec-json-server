@@ -1,0 +1,65 @@
+<div class="row my-4">
+    <div class="col-md-6">
+       <h3>List of Todolist</h3>
+    </div>
+    <div class="col-md-6 text-right">
+        <button (click)="showForm= !showForm" class="btn btn-primary btn-sm">
+            <i class="fa fa-plus"></i> New Todolist
+        </button>
+    </div>
+</div>
+
+
+<div class="row" *ngIf="showForm">
+    <div class="col-md-6 mx-auto">
+      <div class="form-group">
+          <label for="label">label</label>
+              <input [(ngModel)]="myTodolist.label" id="label" type="text" class="form-control">
+            </div>
+
+       <div class="form-check my-2">
+         <label  class="form-check-label">
+           <input [(ngModel)]="myTodolist.completed" type="checkbox" class="form-check-input">
+          Completed
+         </label>
+       </div>
+
+       <button *ngIf="editForm" (click)="updateTodolist()" class="btn btn-warning btn-block">           
+            <i class="fa fa-refresh"></i> Update Todolist
+        </button>
+     
+        <button *ngIf="!editForm" (click)="persistTodolist()" class="btn btn-success btn-block">           
+            <i class="fa fa-send"></i> New Todolist
+        </button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <input (keyup)="searchTodolists()"  [(ngModel)]="SearchText"  placeholder="Search..."type="text" class="form-control">
+      <ul class="list-group">
+          
+          <li *ngFor="let todolist of resultTodolists"  class="list-group-item d-flex justify-content-between align-items-center">
+           <button  (click) ="editTodolist(todolist)"  class="btn btn-warning btn-sm">
+               <i class="fa fa-pencil"></i>
+
+           </button>
+            {{ todolist.label }}
+              <span (click)="toggleCompleted(todolist)" [ngClass]="{
+                  'badge-info': todolist.completed,
+                  'badge-danger': !todolist.completed
+              }"   class="badge badge-danger badge-pill"> 
+                    <i class="fa" [ngClass]="{
+                        'fa-thumbs-up': todolist.completed,
+                        'fa-thumbs-down': !todolist.completed
+                    }"></i> 
+                </span>  
+                <button (click)="deleteTodolist(todolist.id)" class="btn btn-sm btn-dark">
+                    <i class="fa fa-trash"></i>
+                
+                </button>
+          </li>
+          
+      </ul>
+    </div>
+</div>
